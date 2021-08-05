@@ -1,0 +1,20 @@
+name: 'GitHub Actions DZqiandao Bot'
+#国际标准时间:17点(北京2点)触发任务
+on:
+  push:
+  schedule:
+    - cron: '0 16 * * *'
+
+jobs:
+  curl-my-site:
+     runs-on: ubuntu-latest
+     steps:
+       - name: 'xecute command'
+         env:
+          USER_AGENT: ${{ secrets.USER_AGENT }}
+          COOKIE: ${{ secrets.COOKIE }}
+          #DZ论坛的防攻击机制验证码
+          FORMHASH: ${{ secrets.FORMHASH }}
+         # 向站点发送 GET 请求
+         run:                                 
+          curl -b '$COOKIE' -A '$USER_AGENT' https://bbs.binmt.cc/k_misign-sign.html?operation=qiandao&format=button&formhash=$FORMHASH&inajax=1&ajaxtarget=midaben_sign
