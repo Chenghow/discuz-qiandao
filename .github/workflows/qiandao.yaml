@@ -1,12 +1,12 @@
 name: 'GitHub Actions DZqiandao Bot'
-#国际标准时间:17点(北京2点)触发任务
+# UTC16:01(北京UTC+8 00:01点)触发任务
 on:
   push:
   schedule:
-    - cron: '0 16 * * *'
+    - cron: '1 16 * * *'
 
 jobs:
-  curl-my-site:
+  curl-discuz:
      runs-on: ubuntu-latest
      steps:
        - name: 'xecute command'
@@ -17,4 +17,4 @@ jobs:
           FORMHASH: ${{ secrets.FORMHASH }}
          # 向站点发送 GET 请求
          run:                                 
-          curl -b '$COOKIE' -A '$USER_AGENT' https://bbs.binmt.cc/k_misign-sign.html?operation=qiandao&format=button&formhash=$FORMHASH&inajax=1&ajaxtarget=midaben_sign
+          curl -A "$USER_AGENT" -b "$COOKIE" "https://bbs.binmt.cc/k_misign-sign.html?operation=qiandao&format=button&formhash=$FORMHASH&inajax=1&ajaxtarget=midaben_sign"
