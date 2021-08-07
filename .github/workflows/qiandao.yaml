@@ -1,9 +1,9 @@
 name: 'GitHub Actions DZqiandao Bot'
-# UTC16:01(北京UTC+8 00:01点)触发任务
+# UTC16:00(北京UTC+8 00:00点)触发任务
 on:
   push:
   schedule:
-    - cron: '1 16 * * *'
+    - cron: '0 16 * * *'
 
 jobs:
   curl-discuz:
