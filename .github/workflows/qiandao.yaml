@@ -1,6 +1,7 @@
 name: 'GitHub Actions DZqiandao Bot'
 # UTC17:00(北京UTC+8 01:00点)触发任务
 on:
+  workflow_dispatch:
   push:
   schedule:
     - cron: '0 16 * * *'
